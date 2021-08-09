@@ -147,8 +147,8 @@ let paris = {
 
 };
 
-paris.getRandome();
-paris.pTotal();
+paris.calculte();
+paris.render();
 
 let lima = {
   name: 'lima',
@@ -183,5 +183,5 @@ let lima = {
 
 };
 
-lima.getRandome();
-lima.pTotal();
+lima.calculte();
+lima.render();
