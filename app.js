@@ -3,6 +3,7 @@ let hoursWork = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm
 let Step = document.getElementById('Step');
 let tableEl = document.createElement('table');
 Step.appendChild(tableEl);
+
 let Stores = [];
 function Store (name, minNumber, maxNumber, avgCookie){
   this.name =name;
@@ -62,10 +63,10 @@ function createTableHeader() {
   trEl.appendChild(thEl3);
   thEl3.textContent = 'daily Location Total';
 }
-function tableFooter (Store1, Store2, Store3, Store4, Store5){
+function tableFooter (Store1, Store2, Store3, Store4, Store5, Store6){
   let total =0;
   let allStores = [Store1, Store2, Store3, Store4, Store5];
-  let totalHours = Store1.total + Store2.total + Store3.total + Store4.total + Store5.total;
+  let totalHours = Store1.total + Store2.total + Store3.total + Store4.total + Store5.total + Store6.total;
   let trEl = document.createElement('tr');
   let thEl9 = document.createElement('th');
   trEl.appendChild(thEl9);
@@ -106,12 +107,26 @@ Paris.render();
 let Lima = new Store ('lima', 2, 16, 4.6);
 Lima.calculte(2,16);
 Lima.render();
+let drag = document.getElementById('new-store');
+drag.addEventListener('submit',form);
+function form (event){
+  event.preventDefault();
+  let where = event.target.where.value;
+  let max_sale = event.target.max_sale.value;
+  let min_sale = event.target.min_sale.value;
+  let avg_sale = event.target.avg_sale.value;
+  let newStore = new Store(where, min_sale ,max_sale, avg_sale);
+  document.getElementById('Step').innerHTML='';
+  Step.appendChild(tableEl);
+  newStore.calculte(newStore.minNumber, newStore.maxNumber);
+  newStore.render();
 
+  tableFooter(Seattle, Tokyo, Dubai, Paris, Lima, newStore);
+}
 function getRandom(minNumber, maxNumber){
   return Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
 }
 
-tableFooter(Seattle, Tokyo, Dubai, Paris, Lima);
 // let hoursWork = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 // let step = document.getElementById('step');
 // let seattle = {
