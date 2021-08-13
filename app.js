@@ -69,7 +69,7 @@ function tableFooter (Store1, Store2, Store3, Store4, Store5){
   let trEl = document.createElement('tr');
   let thEl9 = document.createElement('th');
   trEl.appendChild(thEl9);
-  thEl9.textContent = 'total';
+  thEl9.textContent = 'total per hours ';
   tableEl.appendChild(trEl);
   for(let h =0; h < hoursWork.length; h++)
   {
